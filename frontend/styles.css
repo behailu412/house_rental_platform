@@ -1,0 +1,503 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom background styles */
+.bg-hero-pattern {
+  background-image: url('./background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+}
+
+/* Deeper overlay when landing uses dark theme (parent has .dark) */
+.dark .bg-hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(2, 6, 23, 0.88) 0%,
+    rgba(15, 23, 42, 0.82) 45%,
+    rgba(9, 9, 11, 0.78) 100%
+  );
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+  }
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.4s ease-out;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.8s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Staggered animations */
+.stagger-animation > * {
+  opacity: 0;
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* Loading skeleton */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* Header specific animations */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes text-shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation classes for header */
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+.animate-text-shimmer {
+  background-size: 200% 200%;
+  animation: text-shimmer 3s linear infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 200%;
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.5s ease-out;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Shared dark mode styling for renter/owner/admin consoles */
+.dark .renter-console,
+.dark .owner-console,
+.dark .admin-console {
+  color: #e2e8f0;
+}
+
+.dark .renter-console aside,
+.dark .owner-console aside,
+.dark .admin-console aside,
+.dark .admin-console header {
+  background: #0b1220 !important;
+  border-color: #334155 !important;
+}
+
+.dark .renter-console .bg-white,
+.dark .owner-console .bg-white,
+.dark .admin-console .bg-white,
+.dark .renter-console .bg-white\/95,
+.dark .owner-console .bg-white\/95,
+.dark .admin-console .bg-white\/95 {
+  background-color: #0f172a !important;
+}
+
+.dark .renter-console [class*='border-gray'],
+.dark .owner-console [class*='border-gray'],
+.dark .admin-console [class*='border-gray'],
+.dark .renter-console [class*='border-slate'],
+.dark .owner-console [class*='border-slate'],
+.dark .admin-console [class*='border-slate'] {
+  border-color: #334155 !important;
+}
+
+.dark .renter-console .text-gray-900,
+.dark .owner-console .text-gray-900,
+.dark .admin-console .text-gray-900,
+.dark .renter-console .text-slate-900,
+.dark .owner-console .text-slate-900,
+.dark .admin-console .text-slate-900 {
+  color: #f1f5f9 !important;
+}
+
+.dark .renter-console .text-gray-700,
+.dark .owner-console .text-gray-700,
+.dark .admin-console .text-gray-700,
+.dark .renter-console .text-slate-700,
+.dark .owner-console .text-slate-700,
+.dark .admin-console .text-slate-700,
+.dark .renter-console .text-gray-600,
+.dark .owner-console .text-gray-600,
+.dark .admin-console .text-gray-600,
+.dark .renter-console .text-slate-600,
+.dark .owner-console .text-slate-600,
+.dark .admin-console .text-slate-600,
+.dark .renter-console .text-gray-500,
+.dark .owner-console .text-gray-500,
+.dark .admin-console .text-gray-500,
+.dark .renter-console .text-slate-500,
+.dark .owner-console .text-slate-500,
+.dark .admin-console .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .renter-console input,
+.dark .owner-console input,
+.dark .admin-console input,
+.dark .renter-console textarea,
+.dark .owner-console textarea,
+.dark .admin-console textarea,
+.dark .renter-console select,
+.dark .owner-console select,
+.dark .admin-console select {
+  background-color: #0b1220 !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+
+.dark .renter-console input::placeholder,
+.dark .owner-console input::placeholder,
+.dark .admin-console input::placeholder,
+.dark .renter-console textarea::placeholder,
+.dark .owner-console textarea::placeholder,
+.dark .admin-console textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Admin tab-specific dark mode harmonization */
+.dark .admin-console .pending-tab {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+.dark .admin-console .pending-tab [class*='from-white'],
+.dark .admin-console .pending-tab [class*='to-white'],
+.dark .admin-console .pending-tab [class*='from-gray-50'],
+.dark .admin-console .pending-tab [class*='to-slate-50'],
+.dark .admin-console .pending-tab [class*='from-gray-200'],
+.dark .admin-console .pending-tab [class*='to-gray-300'] {
+  background-image: none !important;
+  background-color: #1e293b !important;
+}
+
+.dark .admin-console .pending-tab article {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+.dark .admin-console .pending-tab article:hover {
+  border-color: #475569 !important;
+}
+
+.dark .admin-console .users-tab [class*='from-gray-50'],
+.dark .admin-console .users-tab [class*='to-indigo-50'],
+.dark .admin-console .users-tab [class*='to-purple-50'],
+.dark .admin-console .users-tab [class*='to-gray-100'] {
+  background-image: none !important;
+  background-color: #1e293b !important;
+}
+
+.dark .admin-console .users-tab tbody tr:hover {
+  background-image: none !important;
+  background-color: #1e293b !important;
+}
+
+.dark .admin-console .users-tab input,
+.dark .admin-console .users-tab select,
+.dark .admin-console .users-tab table,
+.dark .admin-console .users-tab thead tr {
+  background-color: #0b1220 !important;
+  border-color: #334155 !important;
+}
+
+.dark .admin-console .complaints-tab [class*='from-gray-50'],
+.dark .admin-console .complaints-tab [class*='to-slate-50'],
+.dark .admin-console .complaints-tab [class*='to-gray-100'],
+.dark .admin-console .complaints-tab [class*='from-red-50'],
+.dark .admin-console .complaints-tab [class*='to-pink-50'] {
+  background-image: none !important;
+  background-color: #1e293b !important;
+}
+
+/* Property details modal dark mode fixes */
+.dark .admin-console .property-details-modal > div {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+.dark .admin-console .property-details-modal [class*='from-blue-50'],
+.dark .admin-console .property-details-modal [class*='to-indigo-50'],
+.dark .admin-console .property-details-modal [class*='from-purple-50'],
+.dark .admin-console .property-details-modal [class*='to-pink-50'],
+.dark .admin-console .property-details-modal [class*='from-emerald-50'],
+.dark .admin-console .property-details-modal [class*='to-teal-50'],
+.dark .admin-console .property-details-modal [class*='from-amber-50'],
+.dark .admin-console .property-details-modal [class*='to-orange-50'],
+.dark .admin-console .property-details-modal [class*='from-gray-50'],
+.dark .admin-console .property-details-modal [class*='to-gray-100'] {
+  background-image: none !important;
+  background-color: #1e293b !important;
+}
+
+.dark .admin-console .property-details-modal [class*='border-blue-'],
+.dark .admin-console .property-details-modal [class*='border-purple-'],
+.dark .admin-console .property-details-modal [class*='border-emerald-'],
+.dark .admin-console .property-details-modal [class*='border-amber-'],
+.dark .admin-console .property-details-modal [class*='border-gray-'] {
+  border-color: #334155 !important;
+}
+
+.dark .admin-console .property-details-modal [class*='text-blue-700'],
+.dark .admin-console .property-details-modal [class*='text-purple-700'],
+.dark .admin-console .property-details-modal [class*='text-amber-700'] {
+  color: #cbd5e1 !important;
+}
+
+.dark .admin-console .property-details-modal [class*='text-emerald-600'] {
+  color: #86efac !important;
+}
+
