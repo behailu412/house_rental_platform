@@ -1,6 +1,6 @@
 -- House Rental Platform (Prototype) - MySQL schema
 -- Run in phpMyAdmin or via MySQL client.
-
+-- create database house_rental_platform  it becomes   " utf8mb4_unicode_ci"
 
 USE house_rental_platform;
 
