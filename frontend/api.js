@@ -7,11 +7,13 @@ export function getApiBase() {
 
   // If you're running via `npm run dev` at port 5173, the backend is almost
   // certainly the XAMPP PHP server on port 80 under your folder name.
-  // (This is a practical fallback when you forgot to set VITE_API_BASE.)
+  // Use the current host to support network access from other devices.
   try {
     const u = new URL(window.location.href);
     if (u.port === '5173') {
-      return 'http://localhost/house_rental_%20platform/backend';
+      // Use the current host (localhost or IP address) instead of hardcoded localhost
+      const currentHost = u.hostname;
+      return `http://${currentHost}/final/backend`;
     }
   } catch {
     // ignore
@@ -21,4 +23,3 @@ export function getApiBase() {
   const basePath = path.split('/frontend')[0] || '';
   return `${window.location.origin}${basePath}/backend`;
 }
-
